@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-3.1.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx-3.1.xsd">
+
+    <!-- use annotations -->
+    <context:annotation-config />
+
+    <!-- package to look for annotated classes -->
+    <context:component-scan base-package="com.auction" />
+
+    <!-- manage transactions with annotations -->
+    <tx:annotation-driven/>
+
+
+    <!-- data source for the database -->
+    <bean id="dataSource"
+          class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="org.postgresql.Driver" />
+        <property name="url" value="jdbc:postgresql://35.196.96.230:5432/postgres" />
+        <property name="username" value="postgres" />
+        <property name="password" value="auctiondb17" />
+    </bean>
+
+    <!-- development database -->
+    <bean id="devDataSource"
+          class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="org.postgresql.Driver" />
+        <property name="url" value="jdbc:postgresql://localhost:5432/dbbackup" />
+        <property name="username" value="postgres" />
+        <property name="password" value="admin" />
+    </bean>
+
+    <!-- configure hibernate session factory -->
+
+    <bean id="sessionFactory"
+          class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <property name="annotatedClasses" >
+            <list>
+                <value>com.auction.entity.User</value>
+                <value>com.auction.entity.Auction</value>
+                <value>com.auction.entity.Bid</value>
+                <value>com.auction.entity.Lot</value>
+            </list>
+        </property>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="dialect">org.hibernate.dialect.PostgreSQL9Dialect</prop>
+                <prop key="c3p0.min_size">10</prop>
+                <prop key="c3p0.max_size">100</prop>
+                <prop key="c3p0.timeout">1800</prop>
+                <prop key="c3p0.max_statements">50</prop>
+                <prop key="hibernate.show_sql">true</prop>
+                <prop key="format_sql">true</prop>
+                <prop key="current_session_context_class">thread</prop>
+                <prop key="hibernate.extensions.use_jdbc_metadata_defaults">false</prop>
+            </props>
+        </property>
+
+    </bean>
+
+    <!-- transaction manager, which will be handling the transactions when @Transactional is used. -->
+    <bean id="transactionManager"
+          class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+
+
+</beans>

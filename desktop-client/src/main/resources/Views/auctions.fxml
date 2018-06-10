@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXDrawer?>
+<?import com.jfoenix.controls.JFXHamburger?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="382.0" prefWidth="727.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AuctionsListControl">
+   <children>
+      <Label layoutX="565.0" layoutY="22.0" text="Auctions" textFill="#363131">
+         <font>
+            <Font name="Eras Medium ITC" size="25.0" />
+         </font>
+      </Label>
+      <AnchorPane layoutX="13.0" layoutY="62.0" prefHeight="207.0" prefWidth="637.0">
+         <children>
+            <TableView fx:id="auctionTable" layoutY="4.0" prefHeight="200.0" prefWidth="637.0">
+              <columns>
+                <TableColumn fx:id="nameAuction" prefWidth="140.0" text="Name" />
+                  <TableColumn fx:id="statusAuction" prefWidth="100.0" text="Status" />
+                  <TableColumn fx:id="startTimeAuction" prefWidth="210.0" text="Start Time" />
+                  <TableColumn fx:id="endTimeAuction" prefWidth="186.0" text="End Time" />
+              </columns>
+            </TableView>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="13.0" layoutY="276.0" prefHeight="96.0" prefWidth="702.0" style="-fx-background-color: e4e4e4;">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <children>
+            <Label fx:id="labelOfAction" alignment="CENTER" layoutY="-1.0" prefHeight="31.0" prefWidth="126.0" style="-fx-background-color: white; -fx-border-color: black;" text="Add new Auction">
+               <font>
+                  <Font name="Eras Bold ITC" size="12.0" />
+               </font>
+            </Label>
+            <TextField fx:id="newAuctionName" alignment="TOP_LEFT" layoutX="537.0" layoutY="14.0" promptText="Name" />
+            <Button fx:id="addAuctionButt" layoutX="597.0" layoutY="53.0" mnemonicParsing="false" onAction="#addNewAuction" prefHeight="31.0" prefWidth="89.0" style="-fx-background-color: linear-gradient(#f2f2f2, #d6d6d6),        linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%),        linear-gradient(#dddddd 0%, #f6f6f6 50%); -fx-background-radius: 8,7,6; -fx-background-insets: 0,1,2; -fx-text-fill: black; -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );" text="Add">
+               <font>
+                  <Font name="Eras Light ITC" size="14.0" />
+               </font></Button>
+            <DatePicker fx:id="newStartDate" layoutX="144.0" layoutY="14.0" prefHeight="25.0" prefWidth="167.0" promptText="Start Date" />
+            <DatePicker fx:id="newEndDate" layoutX="351.0" layoutY="14.0" prefHeight="25.0" prefWidth="167.0" promptText="End Date" />
+            <TextField fx:id="newStartTime" layoutX="144.0" layoutY="46.0" prefHeight="25.0" prefWidth="167.0" promptText="Start Time (hh:mm:ss)" />
+            <TextField fx:id="newEndTime" layoutX="351.0" layoutY="46.0" prefHeight="25.0" prefWidth="167.0" promptText="End Time (hh:mm:ss)" />
+         </children>
+      </AnchorPane>
+      <Button fx:id="editButt" layoutX="659.0" layoutY="165.0" mnemonicParsing="false" onAction="#editAuction" prefHeight="40.0" prefWidth="40.0">
+         <font>
+            <Font name="Arial Black" size="15.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="26.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/edit.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="deleteButt" layoutX="659.0" layoutY="216.0" mnemonicParsing="false" onAction="#deleteAuction" prefHeight="40.0" prefWidth="40.0">
+         <font>
+            <Font name="Arial Black" size="15.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="26.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/delete.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="lotsButt" layoutX="658.0" layoutY="93.0" mnemonicParsing="false" onAction="#openLots" prefHeight="60.0" prefWidth="44.0">
+         <graphic>
+            <ImageView fitHeight="51.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/hammer.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <JFXHamburger fx:id="hamburger" layoutX="673.0" layoutY="27.0" />
+      <JFXDrawer fx:id="drawer" defaultDrawerSize="200.0" prefHeight="382.0" prefWidth="108.0" />
+   </children>
+</AnchorPane>

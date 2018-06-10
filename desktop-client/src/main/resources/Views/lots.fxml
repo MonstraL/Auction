@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXDrawer?>
+<?import com.jfoenix.controls.JFXHamburger?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="382.0" prefWidth="727.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LotsListControl">
+   <children>
+      <Label layoutX="614.0" layoutY="16.0" text="Lots" textFill="#363131">
+         <font>
+            <Font name="Eras Medium ITC" size="25.0" />
+         </font>
+      </Label>
+      <AnchorPane layoutX="13.0" layoutY="258.0" prefHeight="114.0" prefWidth="702.0" style="-fx-background-color: e4e4e4;">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <children>
+            <Label alignment="CENTER" layoutY="-1.0" prefHeight="31.0" prefWidth="126.0" style="-fx-background-color: white; -fx-border-color: black;" text="Add new Lot">
+               <font>
+                  <Font name="Eras Bold ITC" size="12.0" />
+               </font>
+            </Label>
+            <TextField fx:id="newLotName" alignment="TOP_LEFT" layoutX="285.0" layoutY="18.0" prefHeight="25.0" prefWidth="213.0" promptText="Name" />
+            <Button fx:id="addLotButt" layoutX="606.0" layoutY="69.0" mnemonicParsing="false" onAction="#addNewLot" prefHeight="31.0" prefWidth="89.0" style="-fx-background-color: linear-gradient(#f2f2f2, #d6d6d6),        linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%),        linear-gradient(#dddddd 0%, #f6f6f6 50%); -fx-background-radius: 8,7,6; -fx-background-insets: 0,1,2; -fx-text-fill: black; -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );" text="Add">
+               <font>
+                  <Font name="Eras Light ITC" size="14.0" />
+               </font></Button>
+            <TextField fx:id="newLotLocation" alignment="TOP_LEFT" layoutX="285.0" layoutY="45.0" prefHeight="25.0" prefWidth="213.0" promptText="Location" />
+            <TextArea fx:id="newDescription" layoutX="52.0" layoutY="42.0" prefHeight="54.0" prefWidth="226.0" promptText="Description" />
+            <Button fx:id="imageChooseButt" layoutX="506.0" layoutY="12.0" mnemonicParsing="false" onAction="#handleLotImage" prefHeight="90.0" prefWidth="90.0">
+               <graphic>
+                  <ImageView fx:id="imageChooseIcon" fitHeight="70.0" fitWidth="70.0" opacity="0.85" pickOnBounds="true" preserveRatio="true" />
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <TextField fx:id="newMinPrice" layoutX="285.0" layoutY="72.0" prefHeight="25.0" prefWidth="213.0" promptText="Min. price" />
+         </children>
+      </AnchorPane>
+      <ScrollPane layoutX="14.0" layoutY="46.0" prefHeight="200.0" prefWidth="702.0">
+         <content>
+            <VBox fx:id="lotsVBox" prefHeight="200.0" prefWidth="686.0" />
+         </content>
+      </ScrollPane>
+      <JFXHamburger fx:id="hamburger" layoutX="677.0" layoutY="21.0" />
+      <JFXDrawer fx:id="drawer" defaultDrawerSize="200.0" prefHeight="382.0" prefWidth="108.0" />
+   </children>
+</AnchorPane>
